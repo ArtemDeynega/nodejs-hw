@@ -1,5 +1,5 @@
-const contactAddSchema = require('./contacts');
+// const contactSchemas = require('./contacts');
 
-module.exports = {
-  contactAddSchema,
-};
+// module.exports = {
+//   contactSchemas,
+// };
