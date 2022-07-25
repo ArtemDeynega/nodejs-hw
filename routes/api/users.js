@@ -5,11 +5,19 @@ const router = express.Router();
 const { validation, authenticate, upload } = require('../../middlewares');
 const { schemas } = require('../../models/user');
 
+router.get('/verify/:verificationToken', ctrlWrapper(ctrl.verifyEmail));
+router.post(
+  '/verify/',
+  validation(schemas.emailSchema),
+  ctrlWrapper(ctrl.resendVerifyEmail)
+);
+
 router.post(
   '/signup',
   validation(schemas.registerSchema),
   ctrlWrapper(ctrl.register)
 );
+
 router.post('/login', validation(schemas.loginSchema), ctrlWrapper(ctrl.login));
 
 router.get('/logout', authenticate, ctrlWrapper(ctrl.getLogout));
